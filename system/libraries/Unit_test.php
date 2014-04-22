@@ -54,65 +54,7 @@ class CI_Unit_test {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Run the tests
-	 *
-	 * Runs the supplied tests
-	 *
-	 * @access	public
-	 * @param	array
-	 * @return	void
-	 */
-	function set_test_items($items = array())
-	{
-		if ( ! empty($items) AND is_array($items))
-		{
-			$this->_test_items_visible = $items;
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Run the tests
-	 *
-	 * Runs the supplied tests
-	 *
-	 * @access	public
-	 * @param	mixed
-	 * @param	mixed
-	 * @param	string
-	 * @return	string
-	 */
-	function run($test, $expected = TRUE, $test_name = 'undefined', $notes = '')
-	{
-		if ($this->active == FALSE)
-		{
-			return FALSE;
-		}
-
-		if (in_array($expected, array('is_object', 'is_string', 'is_bool', 'is_true', 'is_false', 'is_int', 'is_numeric', 'is_float', 'is_double', 'is_array', 'is_null'), TRUE))
-		{
-			$expected = str_replace('is_float', 'is_double', $expected);
-			$result = ($expected($test)) ? TRUE : FALSE;
-			$extype = str_replace(array('true', 'false'), 'bool', str_replace('is_', '', $expected));
-		}
-		else
-		{
-			if ($this->strict == TRUE)
-				$result = ($test === $expected) ? TRUE : FALSE;
-			else
-				$result = ($test == $expected) ? TRUE : FALSE;
-
-			$extype = gettype($expected);
-		}
-
-		$back = $this->_backtrace();
-
-		$report[] = array (
-							'test_name'			=> $test_name,
-							'test_datatype'		=> gettype($test),
-							'res_datatype'		=> $extype,
-							'result'			=> ($result === TRUE) ? 'passed' : 'failed',
+	 * Run the			=> ($result === TRUE) ? 'passed' : 'failed',
 							'file'				=> $back['file'],
 							'line'				=> $back['line'],
 							'notes'				=> $notes

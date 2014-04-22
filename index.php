@@ -19,6 +19,7 @@
  *
  */
 	define('ENVIRONMENT', 'development');
+//	define('ENVIRONMENT', 'testing');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -32,11 +33,12 @@ if (defined('ENVIRONMENT'))
 {
 	switch (ENVIRONMENT)
 	{
-		case 'development':
-			error_reporting(E_ALL);
-		break;
 	
 		case 'testing':
+		case 'development':
+			error_reporting(E_ALL);
+                        ini_set('display_errors', '1');
+		break;
 		case 'production':
 			error_reporting(0);
 		break;
